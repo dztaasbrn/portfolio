@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annisa Dzata Sabrina — Social Media Specialist & Content Writer</title>
+<meta name="description" content="Portfolio of Annisa Dzata Sabrina — Social Media Specialist, SEO Copywriter, Content Writer & Graphic Designer based in East Java, Indonesia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF8F3;
+    --warm-white: #FFFDF9;
+    --sand: #EDE9DF;
+    --taupe: #C4B9A8;
+    --brown: #7A6754;
+    --espresso: #3D2B1F;
+    --accent: #C4855A;
+    --accent-light: #F2DFD0;
+    --accent-muted: #E8C4A8;
+    --text-primary: #2C1F14;
+    --text-secondary: #6B5744;
+    --text-muted: #9C8878;
+    --border: rgba(122,103,84,0.15);
+    --border-hover: rgba(196,133,90,0.35);
+    --nav-h: 68px;
+    --transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  [data-theme="dark"] {
+    --cream: #1A1410;
+    --warm-white: #221A14;
+    --sand: #2C2218;
+    --taupe: #6B5744;
+    --brown: #A8906D;
+    --espresso: #F0E8D8;
+    --accent: #E09970;
+    --accent-light: #2C1F14;
+    --accent-muted: #3D2B1F;
+    --text-primary: #F0E8D8;
+    --text-secondary: #C4A882;
+    --text-muted: #8A7460;
+    --border: rgba(196,133,90,0.12);
+    --border-hover: rgba(196,133,90,0.3);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: background 0.4s, color 0.4s;
+    overflow-x: hidden;
+  }
+
+  /* LOADER */
+  #loader {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 16px;
+    transition: opacity 0.6s ease;
+  }
+  #loader .loader-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 300; letter-spacing: 0.12em;
+    color: var(--espresso); opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+  }
+  #loader .loader-line {
+    width: 0; height: 1px; background: var(--accent);
+    animation: lineGrow 0.9s 0.8s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+  @keyframes lineGrow { from { width:0; } to { width:120px; } }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: var(--nav-h);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    background: rgba(250,248,243,0.88);
+    backdrop-filter: blur(14px) saturate(1.4);
+    border-bottom: 1px solid var(--border);
+    transition: var(--transition);
+  }
+  [data-theme="dark"] nav { background: rgba(26,20,16,0.88); }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 500; letter-spacing: 0.05em;
+    color: var(--espresso); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-secondary); text-decoration: none; font-weight: 400;
+    transition: color 0.3s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px;
+    background: var(--accent); transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+  .theme-toggle {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid var(--border); background: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-secondary); font-size: 1rem; transition: var(--transition);
+  }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    background: none; border: none; padding: 4px;
+  }
+  .hamburger span {
+    display: block; width: 22px; height: 1.5px;
+    background: var(--text-primary); transition: var(--transition);
+  }
+
+  /* MOBILE NAV */
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 99;
+    background: var(--cream);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px;
+    transform: translateX(100%); transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+  }
+  .mobile-menu.open { transform: translateX(0); }
+  .mobile-menu a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300; letter-spacing: 0.08em;
+    color: var(--espresso); text-decoration: none;
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: calc(var(--nav-h) + 60px) 5% 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 80% 60% at 60% 40%, var(--accent-light) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 15% 70%, var(--sand) 0%, transparent 60%);
+    opacity: 0.5;
+  }
+  .hero-content {
+    position: relative; z-index: 1;
+    max-width: 860px; margin: 0 auto; text-align: center;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); border: 1px solid var(--accent-muted);
+    padding: 6px 18px; border-radius: 40px; margin-bottom: 28px;
+    opacity: 0; animation: fadeUp 0.7s 1.2s forwards;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 8vw, 6.5rem);
+    font-weight: 300; line-height: 1.05; letter-spacing: -0.01em;
+    color: var(--espresso); margin-bottom: 20px;
+    opacity: 0; animation: fadeUp 0.8s 1.4s forwards;
+  }
+  .hero-title {
+    font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-secondary); margin-bottom: 28px; font-weight: 400;
+    opacity: 0; animation: fadeUp 0.7s 1.6s forwards;
+  }
+  .hero-intro {
+    font-size: 1.1rem; color: var(--text-secondary); max-width: 600px;
+    margin: 0 auto 44px; font-weight: 300; line-height: 1.8;
+    opacity: 0; animation: fadeUp 0.7s 1.8s forwards;
+  }
+  .hero-ctas {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.7s 2s forwards;
+  }
+  .btn-primary {
+    padding: 14px 36px; background: var(--espresso); color: var(--cream);
+    border: 1px solid var(--espresso); border-radius: 40px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+    letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+    transition: var(--transition); cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+  .btn-outline {
+    padding: 14px 36px; background: transparent; color: var(--espresso);
+    border: 1px solid var(--border-hover); border-radius: 40px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+    letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+    transition: var(--transition); cursor: pointer;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .hero-scroll {
+    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 10px;
+    opacity: 0; animation: fadeUp 0.7s 2.4s forwards;
+  }
+  .scroll-line { width: 1px; height: 40px; background: var(--taupe); animation: scrollPulse 2s infinite; }
+  @keyframes scrollPulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+  /* SECTION COMMON */
+  section { padding: 100px 5%; }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 12px; font-weight: 400;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 300; color: var(--espresso); line-height: 1.15;
+    margin-bottom: 24px;
+  }
+  .section-body { font-size: 1rem; color: var(--text-secondary); max-width: 640px; line-height: 1.85; }
+
+  /* ABOUT */
+  #about { background: var(--warm-white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; max-width: 1100px; margin: 0 auto; }
+  .about-image-wrap {
+    position: relative;
+  }
+  .about-avatar {
+    width: 100%; max-width: 360px;
+    aspect-ratio: 3/4; border-radius: 4px;
+    background: var(--sand);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; position: relative;
+  }
+  .avatar-initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 300; color: var(--accent); letter-spacing: 0.05em;
+  }
+  .about-stat-cards {
+    position: absolute; bottom: -24px; right: -24px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .stat-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 20px; min-width: 160px;
+    box-shadow: 0 4px 24px rgba(61,43,31,0.07);
+  }
+  .stat-card .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 500; color: var(--accent); line-height: 1;
+  }
+  .stat-card .stat-label {
+    font-size: 0.73rem; color: var(--text-muted); letter-spacing: 0.06em; margin-top: 4px;
+  }
+  .about-text { padding-top: 8px; }
+  .about-text .section-body { max-width: 100%; }
+  .about-body-p { margin-bottom: 18px; }
+  .about-langs {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px;
+  }
+  .lang-badge {
+    font-size: 0.78rem; letter-spacing: 0.06em;
+    padding: 7px 18px; border-radius: 40px;
+    border: 1px solid var(--border); color: var(--text-secondary);
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--cream); }
+  .exp-inner { max-width: 900px; margin: 0 auto; }
+  .timeline {
+    position: relative; margin-top: 56px;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: ''; position: absolute; left: 7px; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .timeline-item {
+    position: relative; margin-bottom: 52px;
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .timeline-item.visible { opacity: 1; transform: none; }
+  .timeline-dot {
+    position: absolute; left: -32px; top: 6px;
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid var(--accent); background: var(--cream);
+    transition: background 0.3s;
+  }
+  .timeline-item:hover .timeline-dot { background: var(--accent); }
+  .timeline-period {
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 8px;
+  }
+  .timeline-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 500; color: var(--espresso); margin-bottom: 4px;
+  }
+  .timeline-org {
+    font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px; letter-spacing: 0.04em;
+  }
+  .timeline-list { list-style: none; }
+  .timeline-list li {
+    font-size: 0.92rem; color: var(--text-secondary);
+    padding: 5px 0 5px 18px; position: relative; line-height: 1.65;
+  }
+  .timeline-list li::before {
+    content: '—'; position: absolute; left: 0;
+    color: var(--accent); font-size: 0.8rem;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--warm-white); }
+  .skills-inner { max-width: 1000px; margin: 0 auto; }
+  .skills-grid {
+    display: flex; flex-wrap: wrap; gap: 12px; margin-top: 48px;
+  }
+  .skill-pill {
+    padding: 12px 22px;
+    border: 1px solid var(--border); border-radius: 40px;
+    font-size: 0.85rem; color: var(--text-secondary);
+    background: var(--cream); cursor: default;
+    transition: var(--transition);
+    opacity: 0; transform: scale(0.95);
+  }
+  .skill-pill.visible { opacity: 1; transform: scale(1); }
+  .skill-pill:hover {
+    border-color: var(--accent); color: var(--accent);
+    background: var(--accent-light); transform: translateY(-3px);
+  }
+
+  /* PORTFOLIO */
+  #portfolio { background: var(--cream); }
+  .portfolio-inner { max-width: 1100px; margin: 0 auto; }
+  .portfolio-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px; margin-top: 52px;
+  }
+  .port-card {
+    border: 1px solid var(--border); border-radius: 16px;
+    background: var(--warm-white); overflow: hidden;
+    transition: var(--transition); text-decoration: none;
+    display: flex; flex-direction: column;
+    opacity: 0; transform: translateY(20px);
+  }
+  .port-card.visible { opacity: 1; transform: none; }
+  .port-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 12px 40px rgba(196,133,90,0.15); }
+  .port-card-thumb {
+    height: 140px; background: var(--sand);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.8rem; position: relative; overflow: hidden;
+  }
+  .port-card-thumb::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(196,133,90,0.15));
+  }
+  .port-card-body { padding: 20px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+  .port-category {
+    font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 8px;
+  }
+  .port-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.18rem; font-weight: 500; color: var(--espresso);
+    line-height: 1.35; margin-bottom: 16px; flex: 1;
+  }
+  .port-link-btn {
+    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); display: flex; align-items: center; gap: 6px;
+  }
+  .port-link-btn svg { transition: transform 0.3s; }
+  .port-card:hover .port-link-btn svg { transform: translate(3px,-3px); }
+
+  /* SOCIAL WRITING */
+  #writing { background: var(--warm-white); }
+  .writing-inner { max-width: 1100px; margin: 0 auto; }
+  .writing-cats { margin-top: 52px; display: flex; flex-direction: column; gap: 52px; }
+  .wcat-label {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 20px; font-weight: 500;
+  }
+  .wcat-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400; color: var(--espresso); margin-bottom: 18px;
+  }
+  .ig-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+  .ig-chip {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 18px; border: 1px solid var(--border); border-radius: 40px;
+    background: var(--cream); color: var(--text-secondary);
+    font-size: 0.82rem; text-decoration: none; transition: var(--transition);
+  }
+  .ig-chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .ig-chip svg { flex-shrink: 0; }
+
+  /* CONTACT */
+  #contact { background: var(--espresso); color: var(--cream); }
+  .contact-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+  #contact .section-label { color: var(--accent-muted); }
+  #contact .section-title { color: var(--cream); }
+  .contact-sub { color: var(--taupe); margin-bottom: 48px; font-size: 1rem; line-height: 1.8; }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-input {
+    width: 100%; padding: 14px 18px;
+    background: rgba(250,248,243,0.07); border: 1px solid rgba(196,133,90,0.25);
+    border-radius: 10px; color: var(--cream);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    transition: border-color 0.3s; outline: none;
+  }
+  .form-input::placeholder { color: var(--taupe); }
+  .form-input:focus { border-color: var(--accent-muted); }
+  textarea.form-input { resize: vertical; min-height: 120px; }
+  .form-submit {
+    width: 100%; padding: 16px;
+    background: var(--accent); border: none; border-radius: 10px;
+    color: #fff; font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; transition: var(--transition);
+  }
+  .form-submit:hover { background: #D4976A; transform: translateY(-2px); }
+  .contact-socials { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .social-btn {
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 22px; border: 1px solid rgba(196,133,90,0.3); border-radius: 40px;
+    color: var(--taupe); font-size: 0.8rem; text-decoration: none;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: var(--transition);
+  }
+  .social-btn:hover { border-color: var(--accent-muted); color: var(--cream); }
+
+  /* FOOTER */
+  footer {
+    background: #271A12; text-align: center;
+    padding: 28px 5%;
+    font-size: 0.78rem; color: var(--taupe); letter-spacing: 0.06em;
+  }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-stat-cards { position: static; flex-direction: row; margin-top: 20px; }
+    .form-row { grid-template-columns: 1fr; }
+    .stat-card { min-width: 140px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <span class="loader-name">Annisa Dzata Sabrina</span>
+  <div class="loader-line"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Annisa D.S.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle dark mode">🌙</button>
+    <button class="hamburger" id="menuBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" class="menu-link">About</a>
+  <a href="#experience" class="menu-link">Experience</a>
+  <a href="#skills" class="menu-link">Skills</a>
+  <a href="#portfolio" class="menu-link">Portfolio</a>
+  <a href="#writing" class="menu-link">Writing</a>
+  <a href="#contact" class="menu-link">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Available for opportunities</div>
+    <h1 class="hero-name">Annisa Dzata<br><em>Sabrina</em></h1>
+    <p class="hero-title">Social Media Specialist &nbsp;·&nbsp; SEO Copywriter &nbsp;·&nbsp; Content Writer &nbsp;·&nbsp; Graphic Designer &nbsp;·&nbsp; Customer Service &nbsp;·&nbsp; Customer Support</p>
+    <p class="hero-intro">Communication Science graduate with a passion for crafting compelling digital stories — from social media strategy to SEO writing, brand positioning, and creative content.</p>
+    <div class="hero-ctas">
+      <a href="#portfolio" class="btn-primary">View Portfolio</a>
+      <a href="#contact" class="btn-outline">Contact Me</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-wrap reveal">
+      <div class="about-avatar">
+        <span class="avatar-initials">ADS</span>
+      </div>
+      <div class="about-stat-cards">
+        <div class="stat-card">
+          <div class="stat-num">800+</div>
+          <div class="stat-label">Daily inquiries managed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">100+</div>
+          <div class="stat-label">SEO articles written</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <p class="section-label">About Me</p>
+      <h2 class="section-title">Creative mind,<br><em>strategic heart.</em></h2>
+      <div class="section-body">
+        <p class="about-body-p">I'm a Communication Science graduate from Brawijaya University with hands-on experience across social media management, SEO copywriting, graphic design, and customer relations. I thrive at the intersection of creativity and strategy.</p>
+        <p class="about-body-p">My professional journey spans roles as a Social Media Specialist at Noka Perfume, SEO Copywriter at Vocasia where I brought over 30 articles to Google's first page, and Account Manager Intern at GoVisa — each role sharpening my ability to communicate the right message to the right audience.</p>
+        <p class="about-body-p">I'm also deeply people-oriented: I led the HR department of IAAS LC UB, coordinating over 150 members and designing systems that improved departmental performance by 15%. Whether it's content or community, I care about the humans behind every interaction.</p>
+      </div>
+      <div class="about-langs">
+        <span class="lang-badge">🇮🇩 Indonesian — Native</span>
+        <span class="lang-badge">🇬🇧 English — Conversational</span>
+        <span class="lang-badge">📍 East Java, Indonesia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="exp-inner">
+    <p class="section-label reveal">Experience</p>
+    <h2 class="section-title reveal">Where I've <em>grown.</em></h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-period">Feb 2023 – Aug 2023</p>
+        <h3 class="timeline-role">Social Media Specialist</h3>
+        <p class="timeline-org">Noka Perfume</p>
+        <ul class="timeline-list">
+          <li>Created 25+ TikTok content plans monthly; managed TikTok Ads Manager for the brand</li>
+          <li>Developed 10+ Instagram Story content plans and compiled 10+ customer personas per month using Notion</li>
+          <li>Collected 15+ video research pieces monthly via Kalodata; conducted Twitter Autobase branding 4x/month</li>
+          <li>Interacted with 5+ customers daily using communication and persuasion skills</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-period">Aug 2022 – Dec 2022</p>
+        <h3 class="timeline-role">SEO Copywriter</h3>
+        <p class="timeline-org">Vocasia</p>
+        <ul class="timeline-list">
+          <li>Produced 100+ SEO-optimized articles for the Vocasia website</li>
+          <li>Achieved 30+ articles ranked on Google's first page through strategic keyword research</li>
+          <li>Planned and executed 1 long-form in-depth article project using strategic and long-form writing skills</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-period">Nov 2023 – Jan 2024</p>
+        <h3 class="timeline-role">Account Manager Intern</h3>
+        <p class="timeline-org">GoVisa</p>
+        <ul class="timeline-list">
+          <li>Assisted 10+ clients daily in visa document preparation with high communication and critical thinking</li>
+          <li>Maintained consistent follow-ups ensuring 100% document completion before embassy submission</li>
+          <li>Helped 3+ clients daily with data entry for embassy submissions; created full trip itineraries and timelines</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-period">May 2024 – Jun 2024</p>
+        <h3 class="timeline-role">Surveyor Intern</h3>
+        <p class="timeline-org">Jatim This Week</p>
+        <ul class="timeline-list">
+          <li>Conducted weekly surveys across 6+ regions based on company needs</li>
+          <li>Interviewed 15+ respondents daily using persuasion and analytical skills</li>
+          <li>Accurately recorded and analyzed all survey and interview data</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-period">May 2025 – May 2026</p>
+        <h3 class="timeline-role">Customer Service Specialist</h3>
+        <p class="timeline-org">Speeds Indonesia</p>
+        <ul class="timeline-list">
+          <li>Managed and responded to 800+ customer inquiries daily across Shopee, TikTok Shop, and Akulaku</li>
+          <li>Maintained a 99% response rate and kept negative reviews under 2%</li>
+          <li>Increased sales conversion through proactive customer recommendations</li>
+          <li>Conducted monthly customer complaint analysis; collaborated with teams to improve performance</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="skills-inner">
+    <p class="section-label reveal">Skills</p>
+    <h2 class="section-title reveal">What I <em>bring.</em></h2>
+    <div class="skills-grid" id="skillsGrid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="portfolio-inner">
+    <p class="section-label reveal">Portfolio</p>
+    <h2 class="section-title reveal">Selected <em>work.</em></h2>
+    <div class="portfolio-grid">
+
+      <a href="https://bit.ly/AnnisaDzataPortofolio" target="_blank" rel="noopener" class="port-card">
+        <div class="port-card-thumb" style="background:linear-gradient(135deg,#EDE9DF,#F2DFD0);">🎨</div>
+        <div class="port-card-body">
+          <p class="port-category">Design & Writing</p>
+          <h3 class="port-title">Design & Content Writing Portfolio</h3>
+          <span class="port-link-btn">Open Portfolio
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="https://www.tiktok.com/@hymanies.id?_t=8qoLaLcBSyo&_r=1" target="_blank" rel="noopener" class="port-card">
+        <div class="port-card-thumb" style="background:linear-gradient(135deg,#E1E8F0,#D0E4F2);">📱</div>
+        <div class="port-card-body">
+          <p class="port-category">TikTok Marketing</p>
+          <h3 class="port-title">Hymanies.id TikTok Business Account</h3>
+          <span class="port-link-btn">View Account
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="https://www.tiktok.com/@besokcheckoutlagi?_t=8qoLeLyvIeu&_r=1" target="_blank" rel="noopener" class="port-card">
+        <div class="port-card-thumb" style="background:linear-gradient(135deg,#EDEAE0,#E2DDD0);">🛍️</div>
+        <div class="port-card-body">
+          <p class="port-category">TikTok Affiliate</p>
+          <h3 class="port-title">TikTok Affiliate Account — @besokcheckoutlagi</h3>
+          <span class="port-link-btn">View Account
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="https://bit.ly/PortofolioWritingDzata" target="_blank" rel="noopener" class="port-card">
+        <div class="port-card-thumb" style="background:linear-gradient(135deg,#F0E8E0,#EAD8C8);">✍️</div>
+        <div class="port-card-body">
+          <p class="port-category">Writing — EN & ID</p>
+          <h3 class="port-title">Writing Portfolio — Mmopilot & Oesman Agency</h3>
+          <span class="port-link-btn">Read Articles
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL WRITING -->
+<section id="writing">
+  <div class="writing-inner">
+    <p class="section-label reveal">Social Media Writing</p>
+    <h2 class="section-title reveal">Campaign <em>samples.</em></h2>
+    <div class="writing-cats">
+
+      <div class="reveal">
+        <p class="wcat-label">A — Sale Brand Campaign</p>
+        <div class="ig-grid">
+          <a href="https://www.instagram.com/p/Crx8QJxv4Cx/?igsh=M2Y2dG1xZTEyMGVq" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Post 1
+          </a>
+          <a href="https://www.instagram.com/p/CtTrWOGpkGS/?igsh=cmR2ZjJ3NWx3eDdm" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Post 2
+          </a>
+          <a href="https://www.instagram.com/p/Cvwws3eP_Z7/?igsh=MTNqMXk3a3c3N3FncA==" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Post 3
+          </a>
+          <a href="https://www.instagram.com/p/CwAoUMEvCm4/?img_index=2&igsh=YWFpNmJ3Ym14a2d3" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Post 4
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <p class="wcat-label">B — Launch Product Campaign</p>
+        <div class="ig-grid">
+          <a href="https://www.instagram.com/p/Cs04YyyvUjY/?igsh=MWgyNGR0Mmw0ZTh6Zg==" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Post 1
+          </a>
+          <a href="https://www.instagram.com/reel/Cs8tleuLXW3/?igsh=MTBicjE4NjI1ejRyMQ==" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Reel 2
+          </a>
+          <a href="https://www.instagram.com/reel/CtB6SrsstLu/?igsh=MTdwZTJsbGFtamh4NA==" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Reel 3
+          </a>
+          <a href="https://www.instagram.com/reel/CtGz3PcOSCV/?igsh=NmQzNmN3djNwbTRq" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Reel 4
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <p class="wcat-label">C — Storytelling Social Media Plan</p>
+        <div class="ig-grid">
+          <a href="https://www.instagram.com/p/CsLs_nAPqEL/?img_index=2&igsh=MTN2d2ZldTd4ZzJpcw==" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Post 1
+          </a>
+          <a href="https://www.instagram.com/p/CsWA04qvbvA/?img_index=2&igsh=MXcwMnZhZ2NyaTVm" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Post 2
+          </a>
+          <a href="https://www.instagram.com/p/CsoAgs2vR_R/?igsh=MWNsOGR5czZmb3I5ag==" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Post 3
+          </a>
+          <a href="https://www.instagram.com/p/CtOzG20PRCy/?img_index=1&igsh=MTZmZHVhMm9zcjBjZw==" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Post 4
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <p class="wcat-label">D — Educational Content</p>
+        <div class="ig-grid">
+          <a href="https://www.instagram.com/p/CtjJO1CvKqU/?img_index=2&igsh=YWNqNmRzZ2oxbm1y" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Post 1
+          </a>
+          <a href="https://www.instagram.com/p/Cu1l7eyPa3N/?img_index=4&igsh=Y3Y1bTdncTFsa2c3" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Post 2
+          </a>
+          <a href="https://www.instagram.com/p/CvXHtMTPyok/?img_index=4&igsh=MWthNG9zbnBpaGN0eA==" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Post 3
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <p class="wcat-label">E — Testimonial Content</p>
+        <div class="ig-grid">
+          <a href="https://www.instagram.com/p/CtoSqFzvmVZ/?img_index=2&igsh=MW85Mmx2cDZmNDhreQ==" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Post 1
+          </a>
+          <a href="https://www.instagram.com/p/Cu_1G94vMdA/?img_index=2&igsh=MTI3bW16ZWtpazhv" target="_blank" rel="noopener" class="ig-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Post 2
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Let's create<br><em>something together.</em></h2>
+    <p class="contact-sub">Open to full-time roles, freelance projects, and exciting collaborations in social media, content creation, copywriting, and digital marketing.</p>
+
+    <form class="contact-form" onsubmit="handleForm(event)">
+      <div class="form-row">
+        <input class="form-input" type="text" placeholder="Your name" required>
+        <input class="form-input" type="email" placeholder="Your email" required>
+      </div>
+      <input class="form-input" type="text" placeholder="Subject">
+      <textarea class="form-input" placeholder="Your message…" required></textarea>
+      <button type="submit" class="form-submit">Send Message →</button>
+    </form>
+
+    <div class="contact-socials">
+      <a href="https://wa.me/628993445816" target="_blank" rel="noopener" class="social-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="mailto:annsdzata@gmail.com" class="social-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+      <a href="https://www.linkedin.com/in/dzataasabrn" target="_blank" rel="noopener" class="social-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://www.instagram.com/dzataasabrn?igsh=ankzbWwzcnZ0N21m" target="_blank" rel="noopener" class="social-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Annisa Dzata Sabrina &nbsp;·&nbsp; Designed with intention &nbsp;·&nbsp; East Java, Indonesia</p>
+</footer>
+
+<script>
+  const skills = [
+    "Social Media Marketing","SEO Writing","Copywriting","Content Planning",
+    "Graphic Design","Canva","Customer Relations","Community Management",
+    "Data Entry","Brand Positioning","TikTok Marketing","People Management",
+    "Keyword Research","Content Strategy","English Communication","Indonesian Communication"
+  ];
+  const grid = document.getElementById('skillsGrid');
+  skills.forEach((s, i) => {
+    const el = document.createElement('div');
+    el.className = 'skill-pill';
+    el.textContent = s;
+    el.style.transitionDelay = (i * 50) + 'ms';
+    grid.appendChild(el);
+  });
+
+  // Loader
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const loader = document.getElementById('loader');
+      loader.style.opacity = '0';
+      setTimeout(() => loader.style.display = 'none', 600);
+    }, 1600);
+  });
+
+  // Theme
+  const html = document.documentElement;
+  let dark = localStorage.getItem('theme') === 'dark';
+  function applyTheme() {
+    html.setAttribute('data-theme', dark ? 'dark' : '');
+    document.getElementById('themeBtn').textContent = dark ? '☀️' : '🌙';
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  }
+  applyTheme();
+  document.getElementById('themeBtn').addEventListener('click', () => { dark = !dark; applyTheme(); });
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  document.querySelectorAll('.menu-link').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  // Intersection observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal, .timeline-item, .port-card, .skill-pill').forEach(el => observer.observe(el));
+
+  // Form
+  function handleForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Message sent! ✓';
+    btn.style.background = '#7A8A6A';
+    setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; e.target.reset(); }, 3000);
+  }
+</script>
+</body>
+</html>
