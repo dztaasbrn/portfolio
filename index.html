@@ -1,894 +1,541 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Annisa Dzata Sabrina — Social Media Specialist & Content Writer</title>
-<meta name="description" content="Portfolio of Annisa Dzata Sabrina — Social Media Specialist, SEO Copywriter, Content Writer & Graphic Designer based in East Java, Indonesia.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --cream: #FAF8F3;
-    --warm-white: #FFFDF9;
-    --sand: #EDE9DF;
-    --taupe: #C4B9A8;
-    --brown: #7A6754;
-    --espresso: #3D2B1F;
-    --accent: #C4855A;
-    --accent-light: #F2DFD0;
-    --accent-muted: #E8C4A8;
-    --text-primary: #2C1F14;
-    --text-secondary: #6B5744;
-    --text-muted: #9C8878;
-    --border: rgba(122,103,84,0.15);
-    --border-hover: rgba(196,133,90,0.35);
-    --nav-h: 68px;
-    --transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
-  }
-  [data-theme="dark"] {
-    --cream: #1A1410;
-    --warm-white: #221A14;
-    --sand: #2C2218;
-    --taupe: #6B5744;
-    --brown: #A8906D;
-    --espresso: #F0E8D8;
-    --accent: #E09970;
-    --accent-light: #2C1F14;
-    --accent-muted: #3D2B1F;
-    --text-primary: #F0E8D8;
-    --text-secondary: #C4A882;
-    --text-muted: #8A7460;
-    --border: rgba(196,133,90,0.12);
-    --border-hover: rgba(196,133,90,0.3);
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; font-size: 16px; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text-primary);
-    line-height: 1.6;
-    transition: background 0.4s, color 0.4s;
-    overflow-x: hidden;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tata | Brand Storyteller</title>
+    
+    <!-- Google Fonts: Playfair Display & DM Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
-  /* LOADER */
-  #loader {
-    position: fixed; inset: 0; z-index: 9999;
-    background: var(--cream);
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 16px;
-    transition: opacity 0.6s ease;
-  }
-  #loader .loader-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem; font-weight: 300; letter-spacing: 0.12em;
-    color: var(--espresso); opacity: 0;
-    animation: fadeUp 0.8s 0.3s forwards;
-  }
-  #loader .loader-line {
-    width: 0; height: 1px; background: var(--accent);
-    animation: lineGrow 0.9s 0.8s cubic-bezier(0.16,1,0.3,1) forwards;
-  }
-  @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
-  @keyframes lineGrow { from { width:0; } to { width:120px; } }
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    height: var(--nav-h);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 5%;
-    background: rgba(250,248,243,0.88);
-    backdrop-filter: blur(14px) saturate(1.4);
-    border-bottom: 1px solid var(--border);
-    transition: var(--transition);
-  }
-  [data-theme="dark"] nav { background: rgba(26,20,16,0.88); }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem; font-weight: 500; letter-spacing: 0.05em;
-    color: var(--espresso); text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a {
-    font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--text-secondary); text-decoration: none; font-weight: 400;
-    transition: color 0.3s; position: relative;
-  }
-  .nav-links a::after {
-    content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px;
-    background: var(--accent); transition: width 0.3s;
-  }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-links a:hover::after { width: 100%; }
-  .nav-right { display: flex; align-items: center; gap: 12px; }
-  .theme-toggle {
-    width: 36px; height: 36px; border-radius: 50%;
-    border: 1px solid var(--border); background: none; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--text-secondary); font-size: 1rem; transition: var(--transition);
-  }
-  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
-  .hamburger {
-    display: none; flex-direction: column; gap: 5px; cursor: pointer;
-    background: none; border: none; padding: 4px;
-  }
-  .hamburger span {
-    display: block; width: 22px; height: 1.5px;
-    background: var(--text-primary); transition: var(--transition);
-  }
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-  /* MOBILE NAV */
-  .mobile-menu {
-    position: fixed; inset: 0; z-index: 99;
-    background: var(--cream);
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px;
-    transform: translateX(100%); transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
-  }
-  .mobile-menu.open { transform: translateX(0); }
-  .mobile-menu a {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem; font-weight: 300; letter-spacing: 0.08em;
-    color: var(--espresso); text-decoration: none;
-  }
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#F7F4EF',       // Warm linen
+                            primary: '#2C2925',  // Deep warm brown
+                            accent: '#8C7355',   // Muted gold-brown
+                            secondary: '#7A7068',// Soft grey-brown
+                            hover: '#D4C4A8',    // Warm sand
+                            card: '#FFFFFF',     // White
+                            placeholder: '#E8E0D4'// Placeholder bg
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"DM Sans"', 'sans-serif'],
+                    },
+                    maxWidth: {
+                        'content': '900px',
+                    },
+                    boxShadow: {
+                        'warm': '0 4px 20px -2px rgba(44, 41, 37, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
 
-  /* HERO */
-  #hero {
-    min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    padding: calc(var(--nav-h) + 60px) 5% 80px;
-    position: relative; overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background: radial-gradient(ellipse 80% 60% at 60% 40%, var(--accent-light) 0%, transparent 70%),
-                radial-gradient(ellipse 50% 40% at 15% 70%, var(--sand) 0%, transparent 60%);
-    opacity: 0.5;
-  }
-  .hero-content {
-    position: relative; z-index: 1;
-    max-width: 860px; margin: 0 auto; text-align: center;
-  }
-  .hero-tag {
-    display: inline-block;
-    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--accent); border: 1px solid var(--accent-muted);
-    padding: 6px 18px; border-radius: 40px; margin-bottom: 28px;
-    opacity: 0; animation: fadeUp 0.7s 1.2s forwards;
-  }
-  .hero-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.2rem, 8vw, 6.5rem);
-    font-weight: 300; line-height: 1.05; letter-spacing: -0.01em;
-    color: var(--espresso); margin-bottom: 20px;
-    opacity: 0; animation: fadeUp 0.8s 1.4s forwards;
-  }
-  .hero-title {
-    font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--text-secondary); margin-bottom: 28px; font-weight: 400;
-    opacity: 0; animation: fadeUp 0.7s 1.6s forwards;
-  }
-  .hero-intro {
-    font-size: 1.1rem; color: var(--text-secondary); max-width: 600px;
-    margin: 0 auto 44px; font-weight: 300; line-height: 1.8;
-    opacity: 0; animation: fadeUp 0.7s 1.8s forwards;
-  }
-  .hero-ctas {
-    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-    opacity: 0; animation: fadeUp 0.7s 2s forwards;
-  }
-  .btn-primary {
-    padding: 14px 36px; background: var(--espresso); color: var(--cream);
-    border: 1px solid var(--espresso); border-radius: 40px;
-    font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
-    letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
-    transition: var(--transition); cursor: pointer;
-  }
-  .btn-primary:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
-  .btn-outline {
-    padding: 14px 36px; background: transparent; color: var(--espresso);
-    border: 1px solid var(--border-hover); border-radius: 40px;
-    font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
-    letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
-    transition: var(--transition); cursor: pointer;
-  }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-  .hero-scroll {
-    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 10px;
-    opacity: 0; animation: fadeUp 0.7s 2.4s forwards;
-  }
-  .scroll-line { width: 1px; height: 40px; background: var(--taupe); animation: scrollPulse 2s infinite; }
-  @keyframes scrollPulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+    <style>
+        body {
+            background-color: #F7F4EF; /* Fallback */
+            color: #2C2925;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-  /* SECTION COMMON */
-  section { padding: 100px 5%; }
-  .section-label {
-    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 12px; font-weight: 400;
-  }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
-    font-weight: 300; color: var(--espresso); line-height: 1.15;
-    margin-bottom: 24px;
-  }
-  .section-body { font-size: 1rem; color: var(--text-secondary); max-width: 640px; line-height: 1.85; }
+        /* Typography scale and constraints */
+        h1, h2, h3, h4, h5, h6, .font-serif {
+            line-height: 1.2;
+        }
+        
+        p, .font-sans {
+            line-height: 1.7;
+        }
 
-  /* ABOUT */
-  #about { background: var(--warm-white); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; max-width: 1100px; margin: 0 auto; }
-  .about-image-wrap {
-    position: relative;
-  }
-  .about-avatar {
-    width: 100%; max-width: 360px;
-    aspect-ratio: 3/4; border-radius: 4px;
-    background: var(--sand);
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden; position: relative;
-  }
-  .avatar-initials {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 5rem; font-weight: 300; color: var(--accent); letter-spacing: 0.05em;
-  }
-  .about-stat-cards {
-    position: absolute; bottom: -24px; right: -24px;
-    display: flex; flex-direction: column; gap: 10px;
-  }
-  .stat-card {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: 12px; padding: 14px 20px; min-width: 160px;
-    box-shadow: 0 4px 24px rgba(61,43,31,0.07);
-  }
-  .stat-card .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem; font-weight: 500; color: var(--accent); line-height: 1;
-  }
-  .stat-card .stat-label {
-    font-size: 0.73rem; color: var(--text-muted); letter-spacing: 0.06em; margin-top: 4px;
-  }
-  .about-text { padding-top: 8px; }
-  .about-text .section-body { max-width: 100%; }
-  .about-body-p { margin-bottom: 18px; }
-  .about-langs {
-    display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px;
-  }
-  .lang-badge {
-    font-size: 0.78rem; letter-spacing: 0.06em;
-    padding: 7px 18px; border-radius: 40px;
-    border: 1px solid var(--border); color: var(--text-secondary);
-  }
+        .max-w-text {
+            max-width: 70ch; /* ~70 characters max line length for readability */
+        }
 
-  /* EXPERIENCE */
-  #experience { background: var(--cream); }
-  .exp-inner { max-width: 900px; margin: 0 auto; }
-  .timeline {
-    position: relative; margin-top: 56px;
-    padding-left: 32px;
-  }
-  .timeline::before {
-    content: ''; position: absolute; left: 7px; top: 0; bottom: 0;
-    width: 1px; background: var(--border);
-  }
-  .timeline-item {
-    position: relative; margin-bottom: 52px;
-    opacity: 0; transform: translateY(20px);
-    transition: opacity 0.6s, transform 0.6s;
-  }
-  .timeline-item.visible { opacity: 1; transform: none; }
-  .timeline-dot {
-    position: absolute; left: -32px; top: 6px;
-    width: 14px; height: 14px; border-radius: 50%;
-    border: 2px solid var(--accent); background: var(--cream);
-    transition: background 0.3s;
-  }
-  .timeline-item:hover .timeline-dot { background: var(--accent); }
-  .timeline-period {
-    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 8px;
-  }
-  .timeline-role {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.55rem; font-weight: 500; color: var(--espresso); margin-bottom: 4px;
-  }
-  .timeline-org {
-    font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px; letter-spacing: 0.04em;
-  }
-  .timeline-list { list-style: none; }
-  .timeline-list li {
-    font-size: 0.92rem; color: var(--text-secondary);
-    padding: 5px 0 5px 18px; position: relative; line-height: 1.65;
-  }
-  .timeline-list li::before {
-    content: '—'; position: absolute; left: 0;
-    color: var(--accent); font-size: 0.8rem;
-  }
+        /* Hero Fade In Animation */
+        .fade-in-on-load {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-  /* SKILLS */
-  #skills { background: var(--warm-white); }
-  .skills-inner { max-width: 1000px; margin: 0 auto; }
-  .skills-grid {
-    display: flex; flex-wrap: wrap; gap: 12px; margin-top: 48px;
-  }
-  .skill-pill {
-    padding: 12px 22px;
-    border: 1px solid var(--border); border-radius: 40px;
-    font-size: 0.85rem; color: var(--text-secondary);
-    background: var(--cream); cursor: default;
-    transition: var(--transition);
-    opacity: 0; transform: scale(0.95);
-  }
-  .skill-pill.visible { opacity: 1; transform: scale(1); }
-  .skill-pill:hover {
-    border-color: var(--accent); color: var(--accent);
-    background: var(--accent-light); transform: translateY(-3px);
-  }
+        /* Editorial Image Placeholder Style */
+        .img-placeholder {
+            background-color: #E8E0D4;
+            color: #8C7355;
+            font-family: 'DM Sans', sans-serif;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            width: 100%;
+            min-height: 300px;
+            border-radius: 2px; /* Very subtle rounding */
+        }
 
-  /* PORTFOLIO */
-  #portfolio { background: var(--cream); }
-  .portfolio-inner { max-width: 1100px; margin: 0 auto; }
-  .portfolio-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px; margin-top: 52px;
-  }
-  .port-card {
-    border: 1px solid var(--border); border-radius: 16px;
-    background: var(--warm-white); overflow: hidden;
-    transition: var(--transition); text-decoration: none;
-    display: flex; flex-direction: column;
-    opacity: 0; transform: translateY(20px);
-  }
-  .port-card.visible { opacity: 1; transform: none; }
-  .port-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 12px 40px rgba(196,133,90,0.15); }
-  .port-card-thumb {
-    height: 140px; background: var(--sand);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2.8rem; position: relative; overflow: hidden;
-  }
-  .port-card-thumb::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, transparent 60%, rgba(196,133,90,0.15));
-  }
-  .port-card-body { padding: 20px 22px 24px; flex: 1; display: flex; flex-direction: column; }
-  .port-category {
-    font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 8px;
-  }
-  .port-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.18rem; font-weight: 500; color: var(--espresso);
-    line-height: 1.35; margin-bottom: 16px; flex: 1;
-  }
-  .port-link-btn {
-    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent); display: flex; align-items: center; gap: 6px;
-  }
-  .port-link-btn svg { transition: transform 0.3s; }
-  .port-card:hover .port-link-btn svg { transform: translate(3px,-3px); }
+        /* Navbar scroll state */
+        .nav-scrolled {
+            background-color: rgba(247, 244, 239, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(140, 115, 85, 0.1);
+        }
 
-  /* SOCIAL WRITING */
-  #writing { background: var(--warm-white); }
-  .writing-inner { max-width: 1100px; margin: 0 auto; }
-  .writing-cats { margin-top: 52px; display: flex; flex-direction: column; gap: 52px; }
-  .wcat-label {
-    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 20px; font-weight: 500;
-  }
-  .wcat-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem; font-weight: 400; color: var(--espresso); margin-bottom: 18px;
-  }
-  .ig-grid { display: flex; flex-wrap: wrap; gap: 12px; }
-  .ig-chip {
-    display: flex; align-items: center; gap: 8px;
-    padding: 10px 18px; border: 1px solid var(--border); border-radius: 40px;
-    background: var(--cream); color: var(--text-secondary);
-    font-size: 0.82rem; text-decoration: none; transition: var(--transition);
-  }
-  .ig-chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-  .ig-chip svg { flex-shrink: 0; }
-
-  /* CONTACT */
-  #contact { background: var(--espresso); color: var(--cream); }
-  .contact-inner { max-width: 700px; margin: 0 auto; text-align: center; }
-  #contact .section-label { color: var(--accent-muted); }
-  #contact .section-title { color: var(--cream); }
-  .contact-sub { color: var(--taupe); margin-bottom: 48px; font-size: 1rem; line-height: 1.8; }
-  .contact-form { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .form-input {
-    width: 100%; padding: 14px 18px;
-    background: rgba(250,248,243,0.07); border: 1px solid rgba(196,133,90,0.25);
-    border-radius: 10px; color: var(--cream);
-    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-    transition: border-color 0.3s; outline: none;
-  }
-  .form-input::placeholder { color: var(--taupe); }
-  .form-input:focus { border-color: var(--accent-muted); }
-  textarea.form-input { resize: vertical; min-height: 120px; }
-  .form-submit {
-    width: 100%; padding: 16px;
-    background: var(--accent); border: none; border-radius: 10px;
-    color: #fff; font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
-    cursor: pointer; transition: var(--transition);
-  }
-  .form-submit:hover { background: #D4976A; transform: translateY(-2px); }
-  .contact-socials { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-  .social-btn {
-    display: flex; align-items: center; gap: 8px;
-    padding: 12px 22px; border: 1px solid rgba(196,133,90,0.3); border-radius: 40px;
-    color: var(--taupe); font-size: 0.8rem; text-decoration: none;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    transition: var(--transition);
-  }
-  .social-btn:hover { border-color: var(--accent-muted); color: var(--cream); }
-
-  /* FOOTER */
-  footer {
-    background: #271A12; text-align: center;
-    padding: 28px 5%;
-    font-size: 0.78rem; color: var(--taupe); letter-spacing: 0.06em;
-  }
-
-  /* REVEAL */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
-  .reveal.visible { opacity: 1; transform: none; }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-    .about-grid { grid-template-columns: 1fr; gap: 48px; }
-    .about-stat-cards { position: static; flex-direction: row; margin-top: 20px; }
-    .form-row { grid-template-columns: 1fr; }
-    .stat-card { min-width: 140px; }
-  }
-</style>
+        /* Custom selection color */
+        ::selection {
+            background: #D4C4A8;
+            color: #2C2925;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-brand-bg text-brand-primary font-sans antialiased selection:bg-brand-hover selection:text-brand-primary relative">
 
-<!-- LOADER -->
-<div id="loader">
-  <span class="loader-name">Annisa Dzata Sabrina</span>
-  <div class="loader-line"></div>
-</div>
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-serif text-xl md:text-2xl font-medium text-brand-primary hover:text-brand-accent transition-colors">Tata.</a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 text-brand-secondary text-sm">
+                <a href="#about" class="hover:text-brand-accent transition-colors">About</a>
+                <a href="#work" class="hover:text-brand-accent transition-colors">Work</a>
+                <a href="#experience" class="hover:text-brand-accent transition-colors">Experience</a>
+                <a href="#contact" class="hover:text-brand-accent transition-colors">Contact</a>
+            </div>
 
-<!-- NAV -->
-<nav>
-  <a href="#hero" class="nav-logo">Annisa D.S.</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#writing">Writing</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div class="nav-right">
-    <button class="theme-toggle" id="themeBtn" aria-label="Toggle dark mode">🌙</button>
-    <button class="hamburger" id="menuBtn" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about" class="menu-link">About</a>
-  <a href="#experience" class="menu-link">Experience</a>
-  <a href="#skills" class="menu-link">Skills</a>
-  <a href="#portfolio" class="menu-link">Portfolio</a>
-  <a href="#writing" class="menu-link">Writing</a>
-  <a href="#contact" class="menu-link">Contact</a>
-</div>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-tag">Available for opportunities</div>
-    <h1 class="hero-name">Annisa Dzata<br><em>Sabrina</em></h1>
-    <p class="hero-title">Social Media Specialist &nbsp;·&nbsp; SEO Copywriter &nbsp;·&nbsp; Content Writer &nbsp;·&nbsp; Graphic Designer &nbsp;·&nbsp; Customer Service &nbsp;·&nbsp; Customer Support</p>
-    <p class="hero-intro">Communication Science graduate with a passion for crafting compelling digital stories — from social media strategy to SEO writing, brand positioning, and creative content.</p>
-    <div class="hero-ctas">
-      <a href="#portfolio" class="btn-primary">View Portfolio</a>
-      <a href="#contact" class="btn-outline">Contact Me</a>
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-grid">
-    <div class="about-image-wrap reveal">
-      <div class="about-avatar">
-        <span class="avatar-initials">ADS</span>
-      </div>
-      <div class="about-stat-cards">
-        <div class="stat-card">
-          <div class="stat-num">800+</div>
-          <div class="stat-label">Daily inquiries managed</div>
+            <!-- Mobile Menu Button (Simple) -->
+            <button class="md:hidden text-brand-primary focus:outline-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
         </div>
-        <div class="stat-card">
-          <div class="stat-num">100+</div>
-          <div class="stat-label">SEO articles written</div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-brand-bg border-b border-brand-accent/20 py-4 px-6 shadow-sm">
+            <div class="flex flex-col space-y-4 text-brand-secondary text-sm">
+                <a href="#about" class="hover:text-brand-accent" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
+                <a href="#work" class="hover:text-brand-accent" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Work</a>
+                <a href="#experience" class="hover:text-brand-accent" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Experience</a>
+                <a href="#contact" class="hover:text-brand-accent" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="about-text reveal">
-      <p class="section-label">About Me</p>
-      <h2 class="section-title">Creative mind,<br><em>strategic heart.</em></h2>
-      <div class="section-body">
-        <p class="about-body-p">I'm a Communication Science graduate from Brawijaya University with hands-on experience across social media management, SEO copywriting, graphic design, and customer relations. I thrive at the intersection of creativity and strategy.</p>
-        <p class="about-body-p">My professional journey spans roles as a Social Media Specialist at Noka Perfume, SEO Copywriter at Vocasia where I brought over 30 articles to Google's first page, and Account Manager Intern at GoVisa — each role sharpening my ability to communicate the right message to the right audience.</p>
-        <p class="about-body-p">I'm also deeply people-oriented: I led the HR department of IAAS LC UB, coordinating over 150 members and designing systems that improved departmental performance by 15%. Whether it's content or community, I care about the humans behind every interaction.</p>
-      </div>
-      <div class="about-langs">
-        <span class="lang-badge">🇮🇩 Indonesian — Native</span>
-        <span class="lang-badge">🇬🇧 English — Conversational</span>
-        <span class="lang-badge">📍 East Java, Indonesia</span>
-      </div>
-    </div>
-  </div>
-</section>
+    </nav>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="exp-inner">
-    <p class="section-label reveal">Experience</p>
-    <h2 class="section-title reveal">Where I've <em>grown.</em></h2>
-    <div class="timeline">
+    <main>
+        <section id="hero" class="min-h-screen flex items-center justify-center pt-20 px-6">
+            <div class="max-w-content mx-auto text-center fade-in-on-load">
+                <h1 class="font-serif text-5xl md:text-6xl lg:text-[72px] text-brand-primary mb-6 leading-tight">
+                    I don't post content.<br>
+                    I tell stories people remember.
+                </h1>
+                
+                <p class="font-sans text-lg md:text-xl text-brand-secondary mb-10 tracking-wide">
+                    Social Media Specialist &middot; Brand Storyteller &middot; Content Strategist
+                </p>
+                
+                <div class="max-w-text mx-auto mb-12">
+                    <p class="font-sans italic text-brand-primary text-base md:text-lg">
+                        "I believe a brand becomes real the moment its audience stops seeing it as something they buy, and starts seeing it as something they understand — something that is part of their lives. That's the only kind of content worth making."
+                    </p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <a href="#work" class="inline-block bg-brand-primary text-brand-bg px-8 py-4 rounded-sm hover:bg-brand-accent transition-colors duration-300 text-sm tracking-wide">
+                        See my work
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1PNhm3sy6N-yhfkxo9zTcu7Jekh-sJhfQ?usp=sharing" target="_blank" class="inline-block text-brand-primary border-b border-brand-primary/30 pb-1 hover:text-brand-accent hover:border-brand-accent transition-colors duration-300 text-sm tracking-wide">
+                        View CV
+                    </a>
+                </div>
+            </div>
+        </section>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <p class="timeline-period">Feb 2023 – Aug 2023</p>
-        <h3 class="timeline-role">Social Media Specialist</h3>
-        <p class="timeline-org">Noka Perfume</p>
-        <ul class="timeline-list">
-          <li>Created 25+ TikTok content plans monthly; managed TikTok Ads Manager for the brand</li>
-          <li>Developed 10+ Instagram Story content plans and compiled 10+ customer personas per month using Notion</li>
-          <li>Collected 15+ video research pieces monthly via Kalodata; conducted Twitter Autobase branding 4x/month</li>
-          <li>Interacted with 5+ customers daily using communication and persuasion skills</li>
-        </ul>
-      </div>
+        <section id="about" class="py-24 md:py-32 px-6 bg-brand-bg">
+            <div class="max-w-content mx-auto">
+                <div class="mb-12">
+                    <span class="block text-brand-accent text-sm tracking-widest mb-4">who i am</span>
+                    <h2 class="font-serif text-3xl md:text-[40px] text-brand-primary">A storyteller who happens to know the metrics.</h2>
+                </div>
+                
+                <div class="font-sans text-brand-primary text-base md:text-lg space-y-6 max-w-text">
+                    <p>
+                        My name is Tata — Communication Sciences graduate from Universitas Brawijaya (GPA 3.83), and a Social Media Specialist with hands-on experience turning real human conversations into brand content that resonates. I spent six months at Noka Perfume doing something most brands don't: I actually talked to their customers, read their messages, understood what they felt — and then built content around that truth.
+                    </p>
+                    <p>
+                        Before and after Noka, I've written 100+ SEO-ranked articles as a copywriter, managed 800+ daily customer interactions at Speeds Indonesia while maintaining a 99% response rate, led 35+ member HR departments in an international student organization, and worked as an Account Manager handling 10+ client relationships daily. My background is wide on purpose — I understand how a brand communicates, how an audience thinks, and how a business operates.
+                    </p>
+                    <p class="font-medium">
+                        I don't make content to fill a calendar. I make content that earns a place in someone's day.
+                    </p>
+                </div>
+                
+                <div class="mt-12 pt-8 border-t border-brand-accent/20">
+                    <p class="font-sans text-sm text-brand-secondary leading-loose">
+                        Content Strategy &middot; Copywriting &middot; Social Media Management &middot; TikTok Ads Manager &middot; Campaign Planning &middot; Audience Persona Research &middot; SEO Writing &middot; Kalodata &middot; Canva &middot; CapCut &middot; Notion &middot; Trello &middot; Google Sheets
+                    </p>
+                </div>
+            </div>
+        </section>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <p class="timeline-period">Aug 2022 – Dec 2022</p>
-        <h3 class="timeline-role">SEO Copywriter</h3>
-        <p class="timeline-org">Vocasia</p>
-        <ul class="timeline-list">
-          <li>Produced 100+ SEO-optimized articles for the Vocasia website</li>
-          <li>Achieved 30+ articles ranked on Google's first page through strategic keyword research</li>
-          <li>Planned and executed 1 long-form in-depth article project using strategic and long-form writing skills</li>
-        </ul>
-      </div>
+        <section id="work" class="py-24 md:py-32 px-6">
+            <div class="max-w-content mx-auto mb-20">
+                <span class="block text-brand-accent text-sm tracking-widest mb-4">the work</span>
+                <h2 class="font-serif text-3xl md:text-[40px] text-brand-primary mb-6 max-w-3xl">Six months, one brand, and everything I learned about storytelling.</h2>
+                <p class="font-sans text-brand-primary text-base md:text-lg max-w-text">
+                    All five of these projects are from my time as Social Media Specialist at Noka Perfume (Feb–Aug 2023) — an Indonesian fragrance brand built on emotional storytelling. My role was to create Instagram and TikTok content that didn't just sell perfume, but made people feel something. Here's how I did it.
+                </p>
+            </div>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <p class="timeline-period">Nov 2023 – Jan 2024</p>
-        <h3 class="timeline-role">Account Manager Intern</h3>
-        <p class="timeline-org">GoVisa</p>
-        <ul class="timeline-list">
-          <li>Assisted 10+ clients daily in visa document preparation with high communication and critical thinking</li>
-          <li>Maintained consistent follow-ups ensuring 100% document completion before embassy submission</li>
-          <li>Helped 3+ clients daily with data entry for embassy submissions; created full trip itineraries and timelines</li>
-        </ul>
-      </div>
+            <article class="max-w-content mx-auto mb-32 pb-32 border-b border-brand-accent/10">
+                <header class="mb-10">
+                    <span class="block text-brand-accent text-sm tracking-widest mb-3">campaign strategy & copywriting</span>
+                    <h3 class="font-serif text-2xl md:text-[32px] text-brand-primary">Meeting the audience in their actual moment.</h3>
+                </header>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <p class="timeline-period">May 2024 – Jun 2024</p>
-        <h3 class="timeline-role">Surveyor Intern</h3>
-        <p class="timeline-org">Jatim This Week</p>
-        <ul class="timeline-list">
-          <li>Conducted weekly surveys across 6+ regions based on company needs</li>
-          <li>Interviewed 15+ respondents daily using persuasion and analytical skills</li>
-          <li>Accurately recorded and analyzed all survey and interview data</li>
-        </ul>
-      </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                    <div class="md:col-span-7 font-sans text-brand-primary text-base space-y-4">
+                        <p><strong class="font-medium text-brand-accent">Situation:</strong> Noka Perfume needed to run sale campaigns for major Indonesian shopping events — 6.6, 8.8, and payday sale — without falling into the trap of looking like every other brand screaming discount codes. In a crowded market, a sale post that only says "PROMO DISKON!" gets scrolled past.</p>
+                        <p><strong class="font-medium text-brand-accent">Task:</strong> My job was to lead the concept and copy for these campaigns. The brief wasn't just "announce the sale" — it was to make the sale feel like it was for the audience, not at them. I was responsible for Instagram feed copy, Stories, Reels scripts, and coordinating brand collaborations.</p>
+                        <p><strong class="font-medium text-brand-accent">Action:</strong> At first, I was still following the old approach because we were in the process of figuring out which direction we wanted to take. Once I understood that effective content is about actually telling a story rather than simply communicating a promotion, I started shifting my approach.</p>
+                        <p>Instead of leading with a discount, I began with a feeling and a relatable situation. For the 25 July payday sale, I created a carousel that opened with a series of fake notification screens — a salary alert, a Shopee promo, a loan reminder, and a message from a partner asking for a treat — before eventually revealing the Noka promotion at the bottom. The idea was to capture the exact chaotic, relatable moment people experience on payday and naturally position the promotion within that story.</p>
+                        <p>For the 6.6 campaign, I also coordinated a giveaway collaboration with Ella Beauty Store, designing the mechanics to generate brand exposure while simultaneously encouraging organic follower growth.</p>
+                        <p><strong class="font-medium text-brand-accent">Result:</strong> The Giveaway x Ella Beauty Store collaboration post pulled 1,250 likes and 739 comments — Noka's highest-performing collaboration content during my tenure. The payday campaign concept was recognized internally as one of the most on-brand sale executions we'd done.</p>
+                        
+                        <div class="pt-6 flex flex-col space-y-2 text-sm">
+                            <a href="https://www.instagram.com/p/Crx8QJxv4Cx/?img_index=1" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Post &rarr;</a>
+                            <a href="https://www.instagram.com/p/CtTrWOGpkGS/" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Post &rarr;</a>
+                            <a href="https://www.instagram.com/p/CvGfRq7P7JS/?img_index=2" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Post &rarr;</a>
+                            <a href="https://www.instagram.com/p/Cvwws3eP_Z7/?img_index=1" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Post &rarr;</a>
+                        </div>
+                    </div>
+                    
+                    <div class="md:col-span-5 space-y-6">
+                        <img src="img-a1.png" alt="Sale campaign — payday notification carousel" style="width:100%; border-radius:8px; margin:24px 0;">
+<img src="img-a2.jpg" alt="Ella Beauty Store giveaway collaboration" style="width:100%; border-radius:8px; margin:24px 0;">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <p class="timeline-period">May 2025 – May 2026</p>
-        <h3 class="timeline-role">Customer Service Specialist</h3>
-        <p class="timeline-org">Speeds Indonesia</p>
-        <ul class="timeline-list">
-          <li>Managed and responded to 800+ customer inquiries daily across Shopee, TikTok Shop, and Akulaku</li>
-          <li>Maintained a 99% response rate and kept negative reviews under 2%</li>
-          <li>Increased sales conversion through proactive customer recommendations</li>
-          <li>Conducted monthly customer complaint analysis; collaborated with teams to improve performance</li>
-        </ul>
-      </div>
+            <article class="max-w-content mx-auto mb-32 pb-32 border-b border-brand-accent/10">
+                <header class="mb-10">
+                    <span class="block text-brand-accent text-sm tracking-widest mb-3">multi-phase campaign strategy &middot; scripting &middot; production</span>
+                    <h3 class="font-serif text-2xl md:text-[32px] text-brand-primary">We didn't launch a box. We launched a promise.</h3>
+                </header>
 
-    </div>
-  </div>
-</section>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                    <div class="md:col-span-7 font-sans text-brand-primary text-base space-y-4">
+                        <p><strong class="font-medium text-brand-accent">Situation:</strong> Noka Perfume had a recurring operational problem: fragrance bottles were arriving broken due to inadequate packaging. Negative reviews citing damaged shipments were climbing. The team developed a new protective perfume case — the Encasement of Hopes — to solve this. But the challenge wasn't the product. The challenge was the launch: how do you turn a packaging fix into something customers actually care about?</p>
+                        <p><strong class="font-medium text-brand-accent">Task:</strong> I was tasked with leading the full campaign concept and writing all scripts. The goal was to frame the Encasement of Hopes not as a logistics upgrade, but as proof that Noka listens — a brand commitment to its customers, not a product announcement.</p>
+                        <p><strong class="font-medium text-brand-accent">Action:</strong> I designed a four-phase campaign arc:<br><br>
+                        Phase 1 — Bridging: Acknowledge the customer's existing relationship with the brand and build emotional connection before saying anything about a product.<br>
+                        Phase 2 — Teaser: Drop subtle hints. Something is coming, but don't reveal what.<br>
+                        Phase 3 — Problem Narrative: Surface the complaints directly. Name the pain. Show that we heard it.<br>
+                        Phase 4 — Solution & Launch: Reveal the Encasement of Hopes as the answer — not a product, but a response.<br><br>
+                        I wrote the script across the four phases. I also participated in filming portions of the background story footage myself, and coordinated the campaign timeline with my supervisor and the business development team.</p>
+                        <p><strong class="font-medium text-brand-accent">Result:</strong> The campaign performed progressively, exactly as designed:<br><br>
+                        &middot; Bridging Reel: 194 likes, 51 comments<br>
+                        &middot; Story Reel: 256 likes, 69 comments<br>
+                        &middot; Launch Reel: 316 likes, 136 comments — Noka's top-performing launch content<br><br>
+                        The comments on the launch reel showed customers responding to the story, not just the product.</p>
+                        
+                        <div class="pt-6 flex flex-col space-y-2 text-sm">
+                            <a href="https://www.instagram.com/heynoka/p/Cs04YyyvUjY/" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Reel &rarr;</a>
+                            <a href="https://www.instagram.com/heynoka/reel/Cs8tleuLXW3/" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Reel &rarr;</a>
+                            <a href="https://www.instagram.com/heynoka/reel/CtB6SrsstLu/" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Reel &rarr;</a>
+                            <a href="https://www.instagram.com/heynoka/reel/CtGz3PcOSCV/" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Reel &rarr;</a>
+                        </div>
+                    </div>
+                    
+                    <div class="md:col-span-5 space-y-6">
+                        <img src="img-a3.png" alt="Sale campaign — payday notification carousel" style="width:100%; border-radius:8px; margin:24px 0;">
+<img src="img-a4.png" alt="Ella Beauty Store giveaway collaboration" style="width:100%; border-radius:8px; margin:24px 0;">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="skills-inner">
-    <p class="section-label reveal">Skills</p>
-    <h2 class="section-title reveal">What I <em>bring.</em></h2>
-    <div class="skills-grid" id="skillsGrid">
-      <!-- injected by JS -->
-    </div>
-  </div>
-</section>
+            <article class="max-w-content mx-auto mb-32 pb-32 border-b border-brand-accent/10">
+                <header class="mb-10">
+                    <span class="block text-brand-accent text-sm tracking-widest mb-3">brand identity &middot; content strategy &middot; soft selling</span>
+                    <h3 class="font-serif text-2xl md:text-[32px] text-brand-primary">Why I never just 'posted' — and what I did instead.</h3>
+                </header>
 
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="portfolio-inner">
-    <p class="section-label reveal">Portfolio</p>
-    <h2 class="section-title reveal">Selected <em>work.</em></h2>
-    <div class="portfolio-grid">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                    <div class="md:col-span-7 font-sans text-brand-primary text-base space-y-4">
+                        <p><strong class="font-medium text-brand-accent">Situation:</strong> Most brand Instagram feeds are a mix of product photos, promotions, and generic lifestyle imagery. Noka Perfume had 4 feed posts per month — a deliberately small number. Every single one had to count, and had to represent the brand's identity, not just fill a calendar slot.</p>
+                        <p><strong class="font-medium text-brand-accent">Task:</strong> My role was to build a storytelling-first content strategy that turned every post — sale posts, product posts, testimonial posts — into a narrative that audiences would stop scrolling for. The brief was essentially: make people feel close to this brand.</p>
+                        <p><strong class="font-medium text-brand-accent">Action:</strong> I approached every feed post with the same question: what is the human truth behind this? If I was posting about a sale, I found the emotional moment of a payday. If I was posting about a product, I found the feeling the product gave someone. I built 10+ audience personas monthly using Notion to understand not just who our audience was, but what they were thinking about on the day they'd see our content. I used Kalodata monthly to track what formats were resonating on TikTok, then translated those insights into Instagram's longer-form storytelling format.<br><br>
+                        The philosophy was simple: soft sell through belonging. A person who feels like a brand understands them doesn't need to be convinced to buy. They already want to.</p>
+                        <p><strong class="font-medium text-brand-accent">Result:</strong> Noka's feed maintained a consistent voice and aesthetic identity across 6 months. Audience engagement on story-driven posts consistently outperformed product-only posts. The storytelling approach became the foundation all other content categories were built on.</p>
+                        
+                        <div class="pt-6 flex flex-col space-y-2 text-sm">
+                            <a href="https://www.instagram.com/p/CsLs_nAPqEL/?img_index=2&igsh=MTN2d2ZldTd4ZzJpcw==" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Post &rarr;</a>
+                            <a href="https://www.instagram.com/p/CsWA04qvbvA/?img_index=2&igsh=MXcwMnZhZ2NyaTVm" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Post &rarr;</a>
+                            <a href="https://www.instagram.com/p/CsoAgs2vR_R/?igsh=MWNsOGR5czZmb3I5ag==" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Post &rarr;</a>
+                        </div>
+                    </div>
+                    
+                    <div class="md:col-span-5 space-y-6">
+                        <img src="img-a5.jpg" alt="Sale campaign — payday notification carousel" style="width:100%; border-radius:8px; margin:24px 0;">
+<img src="img-a6.jpg" alt="Ella Beauty Store giveaway collaboration" style="width:100%; border-radius:8px; margin:24px 0;">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-      <a href="https://bit.ly/AnnisaDzataPortofolio" target="_blank" rel="noopener" class="port-card">
-        <div class="port-card-thumb" style="background:linear-gradient(135deg,#EDE9DF,#F2DFD0);">🎨</div>
-        <div class="port-card-body">
-          <p class="port-category">Design & Writing</p>
-          <h3 class="port-title">Design & Content Writing Portfolio</h3>
-          <span class="port-link-btn">Open Portfolio
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
-          </span>
-        </div>
-      </a>
+            <article class="max-w-content mx-auto mb-32 pb-32 border-b border-brand-accent/10">
+                <header class="mb-10">
+                    <span class="block text-brand-accent text-sm tracking-widest mb-3">content writing &middot; audience education &middot; storytelling</span>
+                    <h3 class="font-serif text-2xl md:text-[32px] text-brand-primary">Making the science of fragrance feel like a conversation.</h3>
+                </header>
 
-      <a href="https://www.tiktok.com/@hymanies.id?_t=8qoLaLcBSyo&_r=1" target="_blank" rel="noopener" class="port-card">
-        <div class="port-card-thumb" style="background:linear-gradient(135deg,#E1E8F0,#D0E4F2);">📱</div>
-        <div class="port-card-body">
-          <p class="port-category">TikTok Marketing</p>
-          <h3 class="port-title">Hymanies.id TikTok Business Account</h3>
-          <span class="port-link-btn">View Account
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
-          </span>
-        </div>
-      </a>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                    <div class="md:col-span-7 font-sans text-brand-primary text-base space-y-4">
+                        <p><strong class="font-medium text-brand-accent">Situation:</strong> Fragrance is a category full of technical language that most consumers don't understand — top notes, base notes, longevity, sillage. Educational content about perfume risks feeling like a lecture. The challenge was making it genuinely useful without losing Noka's warm, intimate brand voice.</p>
+                        <p><strong class="font-medium text-brand-accent">Task:</strong> Create educational content that taught the audience real things about fragrance — myth vs. fact, how to wear it correctly, how to make it last — while keeping it conversational, relatable, and on-brand.</p>
+                        <p><strong class="font-medium text-brand-accent">Action:</strong> Instead of starting with information, I started with a real customer experience. One recurring complaint I noticed: customers saying their perfume seemed to last shorter over time after the first few uses. I took that real DM as the opening of the content — named the exact feeling the customer described — and then walked through the actual science behind it in plain, friendly language. Every educational post started with a human moment, then delivered the insight. Myth-or-fact posts were framed as gentle provocations ("Do you do this?") rather than corrections.</p>
+                        <p><strong class="font-medium text-brand-accent">Result:</strong> Educational posts with a real customer message as the opening hook consistently generated higher save rates and comment responses compared to purely informational posts. Readers engaged because they saw themselves in the opening — not because they wanted to learn.</p>
+                        
+                        <div class="pt-6 flex flex-col space-y-2 text-sm">
+                            <a href="https://www.instagram.com/p/CtjJO1CvKqU/?img_index=2&igsh=YWNqNmRzZ2oxbm1y" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Post &rarr;</a>
+                            <a href="https://www.instagram.com/p/Cu1l7eyPa3N/?img_index=4&igsh=Y3Y1bTdncTFsa2c3" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Post &rarr;</a>
+                            <a href="https://www.instagram.com/p/CvXHtMTPyok/?img_index=4&igsh=MWthNG9zbnBpaGN0eA==" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Post &rarr;</a>
+                        </div>
+                    </div>
+                    
+                    <div class="md:col-span-5">
+                        <img src="img-a7.png" alt="Sale campaign — payday notification carousel" style="width:100%; border-radius:8px; margin:24px 0;">
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-      <a href="https://www.tiktok.com/@besokcheckoutlagi?_t=8qoLeLyvIeu&_r=1" target="_blank" rel="noopener" class="port-card">
-        <div class="port-card-thumb" style="background:linear-gradient(135deg,#EDEAE0,#E2DDD0);">🛍️</div>
-        <div class="port-card-body">
-          <p class="port-category">TikTok Affiliate</p>
-          <h3 class="port-title">TikTok Affiliate Account — @besokcheckoutlagi</h3>
-          <span class="port-link-btn">View Account
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
-          </span>
-        </div>
-      </a>
+            <article class="max-w-content mx-auto">
+                <header class="mb-10">
+                    <span class="block text-brand-accent text-sm tracking-widest mb-3">community storytelling &middot; emotional copywriting &middot; UGC strategy</span>
+                    <h3 class="font-serif text-2xl md:text-[32px] text-brand-primary">I never posted a testimonial. I published a story that happened to be one.</h3>
+                </header>
 
-      <a href="https://bit.ly/PortofolioWritingDzata" target="_blank" rel="noopener" class="port-card">
-        <div class="port-card-thumb" style="background:linear-gradient(135deg,#F0E8E0,#EAD8C8);">✍️</div>
-        <div class="port-card-body">
-          <p class="port-category">Writing — EN & ID</p>
-          <h3 class="port-title">Writing Portfolio — Mmopilot & Oesman Agency</h3>
-          <span class="port-link-btn">Read Articles
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
-          </span>
-        </div>
-      </a>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                    <div class="md:col-span-7 font-sans text-brand-primary text-base space-y-4">
+                        <p><strong class="font-medium text-brand-accent">Situation:</strong> Five-star reviews exist on every brand's page. Audiences scroll past them. A screenshot of a marketplace rating tells you nothing about why the product mattered. At Noka, I had access to something most social media managers don't use: real, personal conversations in the DMs. Customers weren't just leaving ratings — they were telling me about their lives.</p>
+                        <p><strong class="font-medium text-brand-accent">Task:</strong> Transform raw customer feedback and DM conversations into content that made audiences feel something — not just see a positive review. The goal was to build community by showing that Noka's customers were real people with real stories, not just satisfied buyers.</p>
+                        <p><strong class="font-medium text-brand-accent">Action:</strong> I developed a practice of actively engaging customers in conversation — asking follow-up questions, letting them tell me more than they planned to. When a customer messaged saying that after a long, frustrating day at work, catching the scent of Noka on her sleeve made her mood lift, I didn't post a rating. I built a carousel around that moment: opened with a literary quote about fragrance and feeling, revealed the DM conversation, closed with an invitation: "How about yours?" — turning the post into a community prompt.<br><br>
+                        For another post, a customer named Zaven mentioned in a DM that Noka was what made her feel confident enough to present at her thesis defence without hesitation. I structured a full narrative around her experience — the anxiety of presenting in front of examiners, the weight of that day, the small detail that helped her feel grounded — and only at the end revealed it was a testimonial. Then I connected her story to the launch of the Encasement of Hopes, making the UGC the bridge to a product campaign.</p>
+                        <p><strong class="font-medium text-brand-accent">Result:</strong><br>
+                        &middot; Mood-lifting fragrance post: 130+ likes, 7 comments including audience sharing their own experiences<br>
+                        &middot; Zaven's confidence story: 315 likes, 147 comments — one of Noka's highest-performing feed posts ever<br>
+                        &middot; Multiple comment threads showed audience members sharing their own personal fragrance memories unprompted</p>
+                        
+                        <div class="pt-6 flex flex-col space-y-2 text-sm">
+                            <a href="https://www.instagram.com/p/CtoSqFzvmVZ/?img_index=2&igsh=MW85Mmx2cDZmNDhreQ==" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Post &rarr;</a>
+                            <a href="https://www.instagram.com/heynoka/p/CtOzG20PRCy/" target="_blank" class="text-brand-secondary hover:text-brand-accent transition-colors flex items-center">View Post &rarr;</a>
+                        </div>
+                    </div>
+                    
+                    <div class="md:col-span-5 space-y-6">
+                        <img src="img-a8.jpg" alt="Sale campaign — payday notification carousel" style="width:100%; border-radius:8px; margin:24px 0;">
+<img src="img-a9.jpg" alt="Ella Beauty Store giveaway collaboration" style="width:100%; border-radius:8px; margin:24px 0;">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
 
-    </div>
-  </div>
-</section>
+        <section id="experience" class="py-24 md:py-32 px-6 bg-brand-bg border-t border-brand-accent/10">
+            <div class="max-w-content mx-auto">
+                <div class="mb-16">
+                    <span class="block text-brand-accent text-sm tracking-widest mb-4">more experience</span>
+                    <h2 class="font-serif text-3xl md:text-[40px] text-brand-primary">The work that shaped how I think.</h2>
+                </div>
 
-<!-- SOCIAL WRITING -->
-<section id="writing">
-  <div class="writing-inner">
-    <p class="section-label reveal">Social Media Writing</p>
-    <h2 class="section-title reveal">Campaign <em>samples.</em></h2>
-    <div class="writing-cats">
+                <div class="space-y-12 max-w-text">
+                    <!-- Entry 1 -->
+                    <div>
+                        <h4 class="font-sans font-medium text-lg text-brand-primary">Customer Service Specialist — Speeds Indonesia</h4>
+                        <span class="block text-sm text-brand-secondary mb-3">May 2025–May 2026</span>
+                        <p class="font-sans text-base text-brand-primary italic break-words w-full">"800+ daily interactions, 99% response rate, and a cross-functional complaint reduction system that brought negative reviews under 2%. I learned that customer service done well is just storytelling under pressure."</p>
+                    </div>
 
-      <div class="reveal">
-        <p class="wcat-label">A — Sale Brand Campaign</p>
-        <div class="ig-grid">
-          <a href="https://www.instagram.com/p/Crx8QJxv4Cx/?igsh=M2Y2dG1xZTEyMGVq" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Post 1
-          </a>
-          <a href="https://www.instagram.com/p/CtTrWOGpkGS/?igsh=cmR2ZjJ3NWx3eDdm" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Post 2
-          </a>
-          <a href="https://www.instagram.com/p/Cvwws3eP_Z7/?igsh=MTNqMXk3a3c3N3FncA==" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Post 3
-          </a>
-          <a href="https://www.instagram.com/p/CwAoUMEvCm4/?img_index=2&igsh=YWFpNmJ3Ym14a2d3" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Post 4
-          </a>
-        </div>
-      </div>
+                    <!-- Entry 2 -->
+                    <div>
+                        <h4 class="font-sans font-medium text-lg text-brand-primary">Account Manager Intern — GoVisa</h4>
+                        <span class="block text-sm text-brand-secondary mb-3">Nov 2023–Jan 2024</span>
+                        <p class="font-sans text-base text-brand-primary italic break-words w-full">"10+ client relationships daily, coordinating with embassies and travel partners on tight timelines. I learned that trust is built in the follow-through, not the pitch."</p>
+                    </div>
 
-      <div class="reveal">
-        <p class="wcat-label">B — Launch Product Campaign</p>
-        <div class="ig-grid">
-          <a href="https://www.instagram.com/p/Cs04YyyvUjY/?igsh=MWgyNGR0Mmw0ZTh6Zg==" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Post 1
-          </a>
-          <a href="https://www.instagram.com/reel/Cs8tleuLXW3/?igsh=MTBicjE4NjI1ejRyMQ==" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Reel 2
-          </a>
-          <a href="https://www.instagram.com/reel/CtB6SrsstLu/?igsh=MTdwZTJsbGFtamh4NA==" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Reel 3
-          </a>
-          <a href="https://www.instagram.com/reel/CtGz3PcOSCV/?igsh=NmQzNmN3djNwbTRq" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Reel 4
-          </a>
-        </div>
-      </div>
+                    <!-- Entry 3 -->
+                    <div>
+                        <h4 class="font-sans font-medium text-lg text-brand-primary">Copywriter — Vocasia</h4>
+                        <span class="block text-sm text-brand-secondary mb-3">Aug–Dec 2022</span>
+                        <p class="font-sans text-base text-brand-primary italic break-words w-full">"100+ SEO articles in 5 months. 30+ ranked on Google's first page. I learned that good writing isn't about saying everything — it's about saying the right thing clearly."</p>
+                    </div>
 
-      <div class="reveal">
-        <p class="wcat-label">C — Storytelling Social Media Plan</p>
-        <div class="ig-grid">
-          <a href="https://www.instagram.com/p/CsLs_nAPqEL/?img_index=2&igsh=MTN2d2ZldTd4ZzJpcw==" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Post 1
-          </a>
-          <a href="https://www.instagram.com/p/CsWA04qvbvA/?img_index=2&igsh=MXcwMnZhZ2NyaTVm" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Post 2
-          </a>
-          <a href="https://www.instagram.com/p/CsoAgs2vR_R/?igsh=MWNsOGR5czZmb3I5ag==" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Post 3
-          </a>
-          <a href="https://www.instagram.com/p/CtOzG20PRCy/?img_index=1&igsh=MTZmZHVhMm9zcjBjZw==" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Post 4
-          </a>
-        </div>
-      </div>
+                    <!-- Entry 4 -->
+                    <div>
+                        <h4 class="font-sans font-medium text-lg text-brand-primary">Graphic Designer & Content Creator — Kencana Bodyworks</h4>
+                        <span class="block text-sm text-brand-secondary mb-3">Apr 2021–Feb 2022</span>
+                        <p class="font-sans text-base text-brand-primary italic break-words w-full">"2+ social media pieces daily, 3+ product packaging lines, and supervising 2 interns. I learned that visual consistency is a form of respect for your audience."</p>
+                    </div>
 
-      <div class="reveal">
-        <p class="wcat-label">D — Educational Content</p>
-        <div class="ig-grid">
-          <a href="https://www.instagram.com/p/CtjJO1CvKqU/?img_index=2&igsh=YWNqNmRzZ2oxbm1y" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Post 1
-          </a>
-          <a href="https://www.instagram.com/p/Cu1l7eyPa3N/?img_index=4&igsh=Y3Y1bTdncTFsa2c3" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Post 2
-          </a>
-          <a href="https://www.instagram.com/p/CvXHtMTPyok/?img_index=4&igsh=MWthNG9zbnBpaGN0eA==" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Post 3
-          </a>
-        </div>
-      </div>
+                    <!-- Entry 5 -->
+                    <div>
+                        <h4 class="font-sans font-medium text-lg text-brand-primary">HR Department Coordinator — IAAS LC UB</h4>
+                        <span class="block text-sm text-brand-secondary mb-3">Jan–Dec 2022</span>
+                        <p class="font-sans text-base text-brand-primary italic break-words w-full">"Led a 35+ member team, recruited 80+ new members, built OKR systems that improved departmental performance by 15%. I learned that managing people is the hardest and most rewarding creative brief there is."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <div class="reveal">
-        <p class="wcat-label">E — Testimonial Content</p>
-        <div class="ig-grid">
-          <a href="https://www.instagram.com/p/CtoSqFzvmVZ/?img_index=2&igsh=MW85Mmx2cDZmNDhreQ==" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Post 1
-          </a>
-          <a href="https://www.instagram.com/p/Cu_1G94vMdA/?img_index=2&igsh=MTI3bW16ZWtpazhv" target="_blank" rel="noopener" class="ig-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            Post 2
-          </a>
-        </div>
-      </div>
+        <section id="contact" class="py-24 md:py-32 px-6">
+            <div class="max-w-content mx-auto">
+                <div class="mb-12 text-center md:text-left">
+                    <span class="block text-brand-accent text-sm tracking-widest mb-4">let's talk</span>
+                    <h2 class="font-serif text-3xl md:text-[40px] text-brand-primary mb-4 max-w-2xl">If you're looking for someone who makes content people actually feel — I'd love to hear from you.</h2>
+                    <p class="font-sans text-brand-secondary">Available for freelance projects, full-time roles, and creative collaborations.</p>
+                </div>
 
-    </div>
-  </div>
-</section>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <!-- Form -->
+                    <div class="bg-brand-card p-8 shadow-warm rounded-sm border border-brand-accent/5">
+                        <form id="contact-form" class="space-y-6">
+                            <!-- Note: name attributes added for EmailJS -->
+                            <div>
+                                <label for="name" class="block text-sm text-brand-secondary mb-2">Name</label>
+                                <input type="text" id="name" name="from_name" required class="w-full bg-brand-bg border border-brand-accent/20 rounded-sm px-4 py-3 text-brand-primary focus:outline-none focus:border-brand-accent transition-colors font-sans">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm text-brand-secondary mb-2">Email</label>
+                                <input type="email" id="email" name="reply_to" required class="w-full bg-brand-bg border border-brand-accent/20 rounded-sm px-4 py-3 text-brand-primary focus:outline-none focus:border-brand-accent transition-colors font-sans">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm text-brand-secondary mb-2">Message</label>
+                                <textarea id="message" name="message" rows="5" required class="w-full bg-brand-bg border border-brand-accent/20 rounded-sm px-4 py-3 text-brand-primary focus:outline-none focus:border-brand-accent transition-colors font-sans resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-accent text-brand-bg px-6 py-4 rounded-sm hover:bg-brand-primary transition-colors duration-300 font-sans tracking-wide text-sm">
+                                Send message
+                            </button>
+                            <p id="form-success" class="hidden text-brand-accent text-sm text-center mt-4 italic">Thank you. Your message has been received.</p>
+                            <p id="form-error" class="hidden text-red-500 text-sm text-center mt-4 italic">Oops! Something went wrong. Please email me directly.</p>
+                        </form>
+                    </div>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-inner">
-    <p class="section-label">Get in Touch</p>
-    <h2 class="section-title">Let's create<br><em>something together.</em></h2>
-    <p class="contact-sub">Open to full-time roles, freelance projects, and exciting collaborations in social media, content creation, copywriting, and digital marketing.</p>
+                    <!-- Direct Links -->
+                    <div class="flex flex-col justify-center space-y-8 font-sans">
+                        <div>
+                            <a href="https://wa.me/6208993445816" target="_blank" class="inline-flex items-center text-brand-primary hover:text-brand-accent transition-colors text-lg">
+                                Message on WhatsApp &rarr;
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#linkedin" target="_blank" class="inline-flex items-center text-brand-primary hover:text-brand-accent transition-colors text-lg">
+                                linkedin.com/in/dzataasabrn &rarr;
+                            </a>
+                        </div>
+                        <div class="pt-4 border-t border-brand-accent/10">
+                            <span class="block text-sm text-brand-secondary mb-1">Email directly at:</span>
+                            <span class="text-brand-primary text-lg">annsdzata@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <form class="contact-form" onsubmit="handleForm(event)">
-      <div class="form-row">
-        <input class="form-input" type="text" placeholder="Your name" required>
-        <input class="form-input" type="email" placeholder="Your email" required>
-      </div>
-      <input class="form-input" type="text" placeholder="Subject">
-      <textarea class="form-input" placeholder="Your message…" required></textarea>
-      <button type="submit" class="form-submit">Send Message →</button>
-    </form>
+        <footer class="py-12 border-t border-brand-accent/10 text-center">
+            <p class="font-sans text-sm text-brand-secondary">
+                &copy; 2026 Annisa Dzata Sabrina &middot; Built with intention, not templates.
+            </p>
+        </footer>
+    </main>
 
-    <div class="contact-socials">
-      <a href="https://wa.me/628993445816" target="_blank" rel="noopener" class="social-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp
-      </a>
-      <a href="mailto:annsdzata@gmail.com" class="social-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Email
-      </a>
-      <a href="https://www.linkedin.com/in/dzataasabrn" target="_blank" rel="noopener" class="social-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </a>
-      <a href="https://www.instagram.com/dzataasabrn?igsh=ankzbWwzcnZ0N21m" target="_blank" rel="noopener" class="social-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-        Instagram
-      </a>
-    </div>
-  </div>
-</section>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
 
-<footer>
-  <p>© 2025 Annisa Dzata Sabrina &nbsp;·&nbsp; Designed with intention &nbsp;·&nbsp; East Java, Indonesia</p>
-</footer>
+        // ==========================================
+        // EMAILJS SETUP
+        // ==========================================
+        
+        // 1. Initialize EmailJS with your Public Key
+        (function() {
+            emailjs.init({
+                publicKey: "bfk3rPVBGoiCTEWEU",
+            });
+        })();
 
-<script>
-  const skills = [
-    "Social Media Marketing","SEO Writing","Copywriting","Content Planning",
-    "Graphic Design","Canva","Customer Relations","Community Management",
-    "Data Entry","Brand Positioning","TikTok Marketing","People Management",
-    "Keyword Research","Content Strategy","English Communication","Indonesian Communication"
-  ];
-  const grid = document.getElementById('skillsGrid');
-  skills.forEach((s, i) => {
-    const el = document.createElement('div');
-    el.className = 'skill-pill';
-    el.textContent = s;
-    el.style.transitionDelay = (i * 50) + 'ms';
-    grid.appendChild(el);
-  });
+        // 2. Handle Form Submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = this.querySelector('button[type="submit"]');
+            const successMsg = document.getElementById('form-success');
+            const errorMsg = document.getElementById('form-error');
+            
+            // Visual feedback - disable button while sending
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            btn.classList.add('opacity-75');
+            
+            // Hide previous messages
+            successMsg.classList.add('hidden');
+            errorMsg.classList.add('hidden');
 
-  // Loader
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const loader = document.getElementById('loader');
-      loader.style.opacity = '0';
-      setTimeout(() => loader.style.display = 'none', 600);
-    }, 1600);
-  });
-
-  // Theme
-  const html = document.documentElement;
-  let dark = localStorage.getItem('theme') === 'dark';
-  function applyTheme() {
-    html.setAttribute('data-theme', dark ? 'dark' : '');
-    document.getElementById('themeBtn').textContent = dark ? '☀️' : '🌙';
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
-  }
-  applyTheme();
-  document.getElementById('themeBtn').addEventListener('click', () => { dark = !dark; applyTheme(); });
-
-  // Mobile menu
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-  document.querySelectorAll('.menu-link').forEach(a => {
-    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  });
-
-  // Intersection observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal, .timeline-item, .port-card, .skill-pill').forEach(el => observer.observe(el));
-
-  // Form
-  function handleForm(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.form-submit');
-    btn.textContent = 'Message sent! ✓';
-    btn.style.background = '#7A8A6A';
-    setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; e.target.reset(); }, 3000);
-  }
-</script>
+            // Send the form using EmailJS
+            emailjs.sendForm('service_eue1gzk', 'template_gfzzin9', this)
+                .then(() => {
+                    // Success!
+                    this.reset();
+                    btn.textContent = 'Send message';
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-75');
+                    
+                    successMsg.classList.remove('hidden');
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMsg.classList.add('hidden');
+                    }, 5000);
+                }, (error) => {
+                    // Error!
+                    console.log('FAILED...', error);
+                    btn.textContent = 'Send message';
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-75');
+                    
+                    errorMsg.classList.remove('hidden');
+                });
+        });
+    </script>
 </body>
 </html>
